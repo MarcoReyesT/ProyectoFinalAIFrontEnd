@@ -1,0 +1,33 @@
+<section>
+	<h1>Tutorias solicitadas</h1>
+
+	<table class="table table-bordered table-hover" style="width: 80%; margin-left: 10%;">
+		<thead>
+			<tr>
+				<th>Libro</th>
+				<th>Estado</th>
+				<th>Usuario</th>
+				<th>Fecha prestamo</th>
+				<th>Fecha devolucion</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="tutoria in vm.tutorias">
+				<td> {{ tutoria.estudiante_id }} </td>
+				<td> {{ tutoria.ramo_id: null }} </td>
+				<td> {{ tutoria.tutor_id }} </td>
+				<td> {{ tutoria.fecha }} </td>
+				<td> {{ tutoria.monto }} </td>
+				<td>
+					<button class="btn btn-danger">Devolver</button>
+					<a ui-sref="verTutoria({id:tutoria.id})" class="btn btn-danger">Ver Tutoria</a>
+					<a ui-sref="actualizarTutoria({id:tutoria.id})" class="btn btn-danger">Actualizar Tutoria</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+
+	<a ui-sref="crearTutoria" class="btn btn-danger" style="width: 30%; margin-left: 10%;">Prestar libro</a>
+</section>
