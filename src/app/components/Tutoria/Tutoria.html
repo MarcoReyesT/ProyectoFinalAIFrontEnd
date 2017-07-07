@@ -4,30 +4,29 @@
 	<table class="table table-bordered table-hover" style="width: 80%; margin-left: 10%;">
 		<thead>
 			<tr>
-				<th>Libro</th>
-				<th>Estado</th>
-				<th>Usuario</th>
-				<th>Fecha prestamo</th>
-				<th>Fecha devolucion</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Telefono</th>
+				<th>Correo</th>
+				<th>Materia Solicitada</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="tutoria in vm.tutorias">
-				<td> {{ tutoria.estudiante_id }} </td>
-				<td> {{ tutoria.ramo_id: null }} </td>
-				<td> {{ tutoria.tutor_id }} </td>
-				<td> {{ tutoria.fecha }} </td>
-				<td> {{ tutoria.monto }} </td>
+			<tr ng-repeat="tutoria in vm.tutorias" ng-if="tutoria.fecha == null">
+				<td> {{ tutoria.estudiante.nombre }} </td>
+				<td> {{ tutoria.estudiante.apellido }} </td>
+				<td> {{ tutoria.estudiante.telefono }} </td>
+				<td> {{ tutoria.estudiante.correo }} </td>
+				<td> {{ tutoria.ramo.nombre_ramo }} </td>
 				<td>
-					<button class="btn btn-danger">Devolver</button>
 					<a ui-sref="verTutoria({id:tutoria.id})" class="btn btn-danger">Ver Tutoria</a>
-					<a ui-sref="actualizarTutoria({id:tutoria.id})" class="btn btn-danger">Actualizar Tutoria</a>
+					<a ui-sref="actualizarTutoria({id:tutoria.id})" class="btn btn-danger">Realizar Tutoria</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 	<br>
 
-	<a ui-sref="crearTutoria" class="btn btn-danger" style="width: 30%; margin-left: 10%;">Prestar libro</a>
+	<a ui-sref="crearTutoria" class="btn btn-danger" style="width: 30%; margin-left: 10%;">Solicitar nueva tutoria</a>
 </section>

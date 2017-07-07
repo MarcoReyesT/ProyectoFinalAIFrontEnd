@@ -1,0 +1,43 @@
+<form ng-submit="vm.semanticAction(vm.tutoriaForm)">
+	<legend ng-if="vm.location === 'store'">Crear tutoria</legend>
+	<legend ng-if="vm.location === 'view'">Ver tutoria</legend>
+	<legend ng-if="vm.location === 'update'">Actualizar tutoria</legend>
+
+	<div class="form-group">
+		<label>Estudiante</label>
+		<select ng-if="vm.location === 'store'" ng-model="vm.tutoriaForm.estudiante_id" class="form-control" ng-options="estudiante as estudiante.titulo for estudiante in vm.estudiantes"></select>
+		<input ng-if="vm.location === 'view' || vm.location === 'update'" ng-model="vm.tutoriaForm.estudiante.nombre" class="form-control" ng-options="estudiante as estudiante.titulo for estudiante in vm.estudiantes" disabled=""></input>
+	</div>
+
+
+	<div class="form-group">
+		<label>Ramo</label>
+		<select ng-if="vm.location === 'store'" ng-model="vm.tutoriaForm.ramo_id" class="form-control" ng-options="ramo as ramo.descripcion for ramo in vm.ramos"></select>
+		<input ng-if="vm.location === 'view' || vm.location === 'update'" ng-model="vm.tutoriaForm.ramo.nombre_ramo" class="form-control" ng-options="ramo as ramo.descripcion for ramo in vm.ramos" disabled=""></input>
+	</div>
+
+
+	<div class="form-group">
+		<label>Fecha</label>
+		<input ng-if="vm.location === 'store' || vm.location === 'update'" ng-model="vm.tutoriaForm.fecha" type="date" class="form-control">
+		<input ng-if="vm.location === 'view'" ng-model="vm.tutoriaForm.fecha_prestamo" class="form-control" disabled=""></input>
+	</div>
+
+
+	<div class="form-group">
+		<label>Monto</label>
+		<input ng-if="vm.location === 'store' || vm.location === 'update'" ng-model="vm.tutoriaForm.fecha_devolucion" type="number" class="form-control">
+		<input ng-if="vm.location === 'view'" ng-model="vm.tutoriaForm.fecha_devolucion" class="form-control" disabled=""></input>
+	</div>
+
+
+	<div class="form-group">
+		<label>Tutor</label>
+		<select ng-if="vm.location === 'store' || vm.location === 'update'" ng-model="vm.tutoriaForm.tutor.nombre" class="form-control" ng-options="tutor as tutor.nombre for tutor in vm.tutores"></select>
+		<input ng-if="vm.location === 'view'" ng-model="vm.tutoriaForm.tutor_id" class="form-control" ng-options="tutor as tutor.nombre for tutor in vm.tutores" disabled=""></input>
+	</div>
+
+	<a ui-sref="tutoria" class="btn btn-default">Volver</a>
+	<button ng-if="vm.location === 'store'" type="submit" class="btn btn-success">Guardar</button>
+	<button ng-if="vm.location === 'update'" type="submit" class="btn btn-danger">Actualizar</button>
+</form>

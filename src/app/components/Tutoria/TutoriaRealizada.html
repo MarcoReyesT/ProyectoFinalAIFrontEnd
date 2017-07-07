@@ -1,0 +1,29 @@
+<section>
+	<h1>Tutorias Realizadas</h1>
+
+	<table class="table table-bordered table-hover" style="width: 80%; margin-left: 10%;">
+		<thead>
+			<tr>
+				<th>Estudiante</th>
+				<th>Ramo</th>
+				<th>Tutor</th>
+				<th>Fecha</th>
+				<th>Monto</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="tutoria in vm.tutoriasRe" ng-if="tutoria.fecha != null">
+				<td> {{ tutoria.estudiante.nombre }} &nbsp; {{ tutoria.estudiante.apellido }} </td>
+				<td> {{ tutoria.ramo.nombre_ramo }} </td>
+				<td> {{ tutoria.tutor.nombre }} </td>
+				<td> {{ tutoria.fecha }} </td>
+				<td> {{ tutoria.monto }} </td>
+				<td>
+					<a ui-sref="verTutoria({id:tutoria.id})" class="btn btn-danger">Ver Tutoria</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+</section>

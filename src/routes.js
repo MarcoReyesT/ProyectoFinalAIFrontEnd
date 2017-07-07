@@ -18,6 +18,10 @@
         url: '/tutoria',
         component: 'tutoria'
       })
+      .state('tutoriaRealizada', {
+        url: '/tutoriaRealizada',
+        component: 'tutoriaRealizada'
+      })
       .state('crearTutoria', {
         url: '/tutoria/crear',
         controller: 'CrearTutoria.controller',
