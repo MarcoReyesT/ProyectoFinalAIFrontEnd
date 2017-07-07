@@ -3,11 +3,14 @@
   angular.module('app')
   .controller('CrearTutoria.controller', store);
 
-  store.$inject = ['TutoriaService', '$log'];
+  store.$inject = ['TutoriaService', 'TutorService', 'RamoService', 'EstudianteService', '$log'];
 
-  function store(TutoriaService, $log) {
+  function store(TutoriaService, TutorService, RamoService, EstudianteService, $log) {
     var vm = this;
     vm.location = 'store';
+    vm.tutores = TutorService.query();
+    vm.ramos = RamoService.query();
+    vm.estudiantes = EstudianteService.query();
     vm.tutoriaForm = {
       estudiante_id: null,
       ramo_id: null,

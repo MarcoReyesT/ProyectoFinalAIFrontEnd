@@ -20,7 +20,7 @@
     }
     vm.semanticAction = function(data){
 
-      data.fecha = getFullFecha(data.fecha);
+      data.fecha = convertDate(data.fecha);
 
       TutoriaService.update({id: $stateParams.id},data,function(response){
         $rootScope.$broadcast('actualizar');
@@ -41,16 +41,11 @@
 
     });
 
-    function getFullFecha(fecha){
-      var dia = fecha.getDate();
-      var mes = fecha.getMonth() + 1;
-      var anno = fecha.getFullYear();
-
-      if(mes<10){
-        mes = "0"+mes;
-      }
-
-      return dia +"-" + mes + "-" + anno;
+    function convertDate(str) {
+      var date = new Date(str);
+      var mnth = ('0' + (date.getMonth() + 1)).slice(-2);
+      var day = ('0' + date.getDate()).slice(-2);
+      return [date.getFullYear(), mnth, day].join('-');
     }
 
   }
